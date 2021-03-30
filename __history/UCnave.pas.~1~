@@ -1,0 +1,33 @@
+unit UCnave;
+
+interface
+Uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,JPEG,PNGImage, Vcl.StdCtrls;
+
+Const
+    MaxE = 1024;
+
+Type
+    Nave_ene = Class
+      Private
+             Nx,Ny:Integer;
+             img :TBitmap;
+      Public
+             Procedure crear;
+
+    End;
+
+implementation
+
+{ Nave_ene }
+
+procedure Nave_ene.crear;
+begin
+  img := TBitmap.Create;
+  img .LoadFromFile('enemiga.BMP');
+  img .Transparent:=True;
+  img .TransparentColor:= img.Canvas.Pixels[1,1];
+  img .TransparentMode:=tmAuto;
+end;
+
+end.

@@ -1,0 +1,54 @@
+unit UCnave;
+
+interface
+Uses Winapi.Windows, Winapi.Messages, System.SysUtils, System.Variants, System.Classes, Vcl.Graphics,
+  Vcl.Controls, Vcl.Forms, Vcl.Dialogs, Vcl.ExtCtrls,JPEG,PNGImage, Vcl.StdCtrls;
+
+Const
+    Max = 8;
+
+Type
+    Nave_ene = Class
+      Private
+             Nx,Ny:Integer;
+             img :TBitmap;
+      Public
+             Function crear(s:string):Tbitmap;
+             Procedure mover_derecha;
+             Procedure mover_Izquierda;
+             Procedure mover_abajo;
+
+
+    End;
+
+implementation
+
+{ Nave_ene }
+
+Function Nave_ene.crear(s:string):Tbitmap;
+begin
+  img := TBitmap.Create;
+  img .LoadFromFile(s);
+  img .Transparent:=True;
+  img .TransparentColor:= img.Canvas.Pixels[1,1];
+  img .TransparentMode:=tmAuto;
+end;
+
+procedure Nave_ene.mover_abajo;
+begin
+Ny:=Ny-20;
+end;
+
+procedure Nave_ene.mover_derecha;
+begin
+Nx:=Nx+20;
+end;
+
+procedure Nave_ene.mover_Izquierda;
+begin
+Nx:=Nx-20;
+end;
+
+
+
+end.
